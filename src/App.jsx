@@ -20,12 +20,21 @@ const reduceFn = (prvState, action) => {
 function App() {
   
   const [state, dispatch] = useReducer(reduceFn, initialState)
+  const increment=()=>{
+    state.count>=10?alert("Ondan büyük olamaz"):dispatch({type:"increment"})
+  }
+  const decrement=()=>{
+    state.count===0?alert("Sıfırdan küçük olamaz"):dispatch({type:"decrement"})
+  }
+  const reset=()=>{
+    dispatch({type:"reset"})
+  }
   return (
     <div className="App">
       <h1>{state.count}</h1>
-     <button onClick={()=>dispatch({type:"increment"})} className='btn btnSucces'>Artır</button>
-     <button onClick={()=>dispatch({type:"decrement"})} className='btn btnDanger'>Eksilt</button>
-     <button onClick={()=>dispatch({type:"reset"})} className='btn btnDefault'>Sıfırla</button>
+     <button onClick={increment} className='btn btnSucces'>Artır</button>
+     <button onClick={decrement} className='btn btnDanger'>Eksilt</button>
+     <button onClick={reset} className='btn btnDefault'>Sıfırla</button>
       
     </div>
   )
